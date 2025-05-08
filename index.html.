@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Comprovante de Pix</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding-top: 40px;
+    }
+    img {
+      width: 300px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .mensagem {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #333;
+    }
+  </style>
+  <script>
+    function pegarLocalizacao() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function(posicao) {
+            const latitude = posicao.coords.latitude;
+            const longitude = posicao.coords.longitude;
+
+            // Abre a localização no Google Maps
+            window.open(https://www.google.com/maps?q=${latitude},${longitude}, '_blank');
+          },
+          function(erro) {
+            alert("Erro ao obter localização: " + erro.message);
+          }
+        );
+      } else {
+        alert("Seu navegador não suporta geolocalização.");
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <h2>Comprovante de Pix</h2>
+  <p class="mensagem">Clique na imagem para confirmar a localização</p>
+
+  <img src="https://via.placeholder.com/300x500?text=Comprovante+de+Pix" alt="Comprovante Pix" onclick="pegarLocalizacao()">
+
+</body>
+</html>
